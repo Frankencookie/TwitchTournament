@@ -7,9 +7,9 @@ using UnityEngine;
 public class Connect : MonoBehaviour
 {
 #region info
-    public string username = "BespingoBot";
-    public string password = "oauth:1ua8o3ter6wkdj35mudtctbiuman5u";
-    public string channelName = "bespingo";
+    public string username = "";
+    public string password = "";
+    public string channelName = "";
 #endregion
     TcpClient twitchClient;
     StreamReader reader;
@@ -37,13 +37,13 @@ public class Connect : MonoBehaviour
 
     void OnDisable()
     {
-        twitchClient.Close();
+        twitchClient?.Close();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(twitchClient.Connected == false)
+        if(twitchClient?.Connected == false)
         {
             Debug.Log("Lost Connection");
             reconnectTimer += Time.deltaTime;
